@@ -1,0 +1,18 @@
+<% layout("/layouts/boilerplate.ejs") -%>
+<body>
+
+    <div class="row mt-2 row-cols-lg-3 row-cols-md-2 row-cols-sm-1 ">
+        <% for(let story of stories) { %>
+            <a href="/stories/<%= story._id %>" class="story-link">
+                <div class="card mt-4">
+            <img src="<%= story.img.url %>" class="card-img-top" alt="story_img" style="height:20rem">
+            <div class="card-img-overlay"></div>
+            <div class="card-body">
+                <p class="card-text"><b><%= story.title %></b></p>
+             </div>
+            </div>
+            </a>
+        
+       <% } %>
+    </div>
+</body>

@@ -1,0 +1,51 @@
+<% layout("/layouts/boilerplate.ejs") -%>
+<div class="row offset-1 mt-3 border border-light-subtle pd-4">
+    <form action="/stories/<%=story._id%>?_method=PUT" method="post" novalidate class="needs-validation" enctype="multipart/form-data">
+        <div class="mt-2 col-6">
+            <label for="title" class="form-label fw-semibold">Title:</label>
+            <input type="text" name="story[title]" class="form-control border border-black" value="<%=story.title%>" required>
+            <div class="invalid-feedback">Please Enter a asthetic title</div>
+        </div>
+        <div class="row">
+            <div class="col-md-6 mt-2">
+        <label for="genre" class="form-label fw-semibold">Select Genre</label>
+        <select id="genre" name="story[genre]" class="form-select border border-black" required>
+            <option value="">-- Select Genre --</option>
+            <option value="Fantasy" <%= story.genre === "Fantasy" ? "selected" : "" %>>Fantasy</option>
+            <option value="Sci-Fi" <%= story.genre === "Sci-Fi" ? "selected" : "" %>>Sci-Fi</option>
+            <option value="Romance" <%= story.genre === "Romance" ? "selected" : "" %>>Romance</option>
+            <option value="Thriller" <%= story.genre === "Thriller" ? "selected" : "" %>>Thriller</option>
+            <option value="Mystery" <%= story.genre === "Mystery" ? "selected" : "" %>>Mystery</option>
+            <option value="Adventure" <%= story.genre === "Adventure" ? "selected" : "" %>>Adventure</option>
+            <option value="Drama" <%= story.genre === "Drama" ? "selected" : "" %>>Drama</option>
+        </select>
+        <div class="invalid-feedback">Please select the genre</div>
+    </div> 
+        <div class="col-md-6 mt-2">
+            <label for="tags" class="form-label fw-semibold">Tags:</label>
+            <input type="text" name="story[tags]" class="form-control border border-black" placeholder="Enter tags" value="<%=story.tags%>" required>
+            <div class="invalid-feedback">Please Enter #tags</div>
+        </div>
+        </div><br>
+        Current Image
+        <div class="mb-3">
+            <img src="<%= story.img.url %>" class="col-2" style="height:100px" >
+        </div>
+        <div class="mt-2 col-4">
+            <label for="img" class="form-label fw-semibold">Upload Image</label>
+            <input type="file" name="story[img]" class="form-control border border-black">
+        </div>
+        <div class="mt-2">
+            <label for="content" class="form-label fw-semibold">Content:</label>
+            <textarea name="story[content]" style="height:200px" class="form-control border border-black" required><%=story.content%></textarea>
+            <div class="invalid-feedback">Please continue the story</div>
+        </div>
+        <div class="mt-2">
+            <label for="summary" class="form-label fw-semibold">Summary:</label>
+            <input type="text" name="story[summary]" class="form-control border border-black" value="<%=story.summary%>" required>
+            <div class="invalid-feedback">Please Enter a short summary</div>
+        </div>
+
+        <button class="btn  mt-3 btn-outline-success  w-auto mb-3">Edit</button>
+    </form>
+</div>

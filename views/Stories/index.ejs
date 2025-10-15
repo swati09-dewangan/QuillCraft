@@ -1,0 +1,30 @@
+<% layout("/layouts/boilerplate.ejs") -%>
+<body>
+    <div class="  mt-1 genres">
+         <a href="/stories/Adventure" class="btn ms-3 btn-outline-primary">Adventure</a>
+         <a href="/stories/Mystery" class="btn  ms-4 mt-2 btn-outline-primary">Mystery</a>
+         <a href="/stories/SciFiction" class="btn ms-4 mt-2 btn-outline-primary">Sci-Fi</a>
+         <a href="/stories/Thriller" class="btn  ms-4 mt-2  btn-outline-primary">Thriller</a>
+         <a href="/stories/Romance" class="btn  ms-4 mt-2  btn-outline-primary">Romance</a>
+         <a href="/stories/Drama" class="btn  ms-4 mt-2  btn-outline-primary">Drama</a>
+         <a href="/stories/Fantasy" class="btn  ms-4 mt-2  btn-outline-primary">Fantasy</a>
+         <a href="#" class="btn  ms-4 mt-2  btn-outline-primary">Comedy</a>
+         <a href="#" class="btn  ms-4 mt-2  btn-outline-primary">Historical</a>
+         <a href="#" class="btn  ms-4 mt-2  btn-outline-primary">Detective</a>
+         <a href="#" class="btn  ms-4 mt-2  btn-outline-primary">War</a>
+    </div>
+    <div class="row mt-2 row-cols-lg-3 row-cols-md-2 row-cols-sm-1 ">
+        <% for(let story of allStories) { %>
+            <a href="/stories/<%= story._id %>" class="story-link">
+                <div class="card first-card mt-4">
+            <img src="<%= story.img.url %>" class="card-img-top" alt="story_img" style="height:20rem">
+            <div class="card-img-overlay"></div>
+            <div class="card-body">
+                <p class="card-text"><b><%= story.title %></b></p>
+             </div>
+            </div>
+            </a>
+        
+       <% } %>
+    </div>
+</body>

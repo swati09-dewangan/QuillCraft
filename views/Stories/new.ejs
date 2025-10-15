@@ -1,0 +1,51 @@
+<% layout("/layouts/boilerplate.ejs") -%>
+<div class="row offset-1 mt-3">
+    <form action="/stories" method="post" novalidate class="needs-validation" enctype="multipart/form-data">
+        <div class="mt-2 col-6">
+            <label for="title" class="form-label fw-semibold">Title:</label>
+            <input type="text" name="story[title]" class="form-control border border-black" placeholder="Enter title" required>
+            <div class="invalid-feedback">Please Enter a asthetic title</div>
+        </div>
+        <div class="row">
+            <div class="col-md-6 mt-2">
+        <label for="genre" class="form-label fw-semibold">Select Genre</label>
+        <select id="genre" name="story[genre]" class="form-select border border-black" required>
+            <option value="">-- Select Genre --</option>
+            <option value="fantasy">Fantasy</option>
+            <option value="sci-fi">Sci-Fi</option>
+            <option value="romance">Romance</option>
+            <option value="horror">Thriller</option>
+            <option value="mystery">Mystery</option>
+            <option value="adventure">Adventure</option>
+            <option value="Drama">Drama</option>
+        </select>
+        <div class="invalid-feedback">Please select the genre</div>
+    </div> 
+    <div class="col-md-6">
+    <label for="tags" class="form-label fw-semibold">Tags:</label>
+    <input type="text" 
+           name="story[tags]" 
+           class="form-control border border-black" 
+           placeholder="Enter tags" 
+           required>
+    <div class="invalid-feedback">Please Enter #tags</div>
+</div>
+</div>
+        <div class="mt-2 col-4">
+            <label for="img" class="form-label fw-semibold">Upload Image</label>
+            <input type="file" name="story[img]" class="form-control border border-black" required>
+        </div>
+        <div class="mt-2">
+            <label for="content" class="form-label fw-semibold">Content:</label>
+            <textarea name="story[content]"rows=8 cols="8" class="form-control border border-black" placeholder="Write story here" required></textarea>
+            <div class="invalid-feedback">Please continue the story</div>
+        </div>
+        <div class="mt-2">
+            <label for="summary" class="form-label fw-semibold">Summary:</label>
+            <input type="text" name="story[summary]" class="form-control border border-black" placeholder="summarize your story" required>
+            <div class="invalid-feedback">Please Enter a short summary</div>
+        </div>
+
+        <button class="btn  mt-3 btn-dark  col-1  mb-3">Create</button>
+    </form>
+</div>
