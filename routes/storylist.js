@@ -106,8 +106,12 @@ router.post("/:id/Remix",
         let url=req.file.path;
         let filename=req.file.filename;
         remixStory.img={url,filename};
-        await remixStory.save();
+    }else {
+        let url=story.img.url;
+        let filename=story.img.filename
+        remixStory.img={url,filename};
     }
+    await remixStory.save();
     console.log(remixStory);
     req.flash("success", "You have created new form of this story!");
     res.redirect(`/stories/${remixStory._id}`); 

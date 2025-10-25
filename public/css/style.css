@@ -43,7 +43,10 @@ body {
     background-color: #008080 !important;
     color: #fff !important;
 }
-
+.tags-genre {
+    font-weight: 500;
+    line-height: 1rem;
+}
 .originalAuthor {
     text-decoration: none;
     color: black;

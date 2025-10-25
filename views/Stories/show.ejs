@@ -4,8 +4,8 @@
     <span class="col-7 mb-2">@<%= story.owner.username %></span> 
     <span class="col-5 end-0">Published on <%= story.createdAt.toDateString() %></span>
     <h4><%=story.title %></h4> 
-    <p><%= story.genre %></p>
-    <p><%= story.tags %></p>
+    <p class="tags-genre"><%= story.genre %></p>
+    <p class="tags-genre"><%= story.tags %></p>
     <p class="story-cont"><%= story.content%>...</p>
 </div>
 <% if(currUser && currUser._id.equals(story.owner._id)) { %>
