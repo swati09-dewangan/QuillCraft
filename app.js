@@ -19,7 +19,6 @@ const review=require("./routes/review.js");
 const user=require("./routes/user.js"); 
 const search=require("./routes/search.js");
 const session =require("express-session");
-const session = require('express-session');
 const MongoStore = require('connect-mongo');
 const flash=require("connect-flash");
 const passport=require("passport");
