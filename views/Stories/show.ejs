@@ -1,0 +1,59 @@
+<% layout("/layouts/boilerplate.ejs") -%>
+<div class="card story-card col-12 shadow-sm p-3 mb-5 bg-body-tertiary rounded">
+    <div class="row mt-4 offset-1  ">
+    <span class="col-7 mb-2">@<%= story.owner.username %></span> 
+    <span class="col-5 end-0">Published on <%= story.createdAt.toDateString() %></span>
+    <h4><%=story.title %></h4> 
+    <p class="tags-genre"><%= story.genre %></p>
+    <p class="tags-genre"><%= story.tags %></p>
+    <p class="story-cont"><%= story.content%>...</p>
+</div>
+<% if(currUser && currUser._id.equals(story.owner._id)) { %>
+<div class="btns offset-1 mt-3 ">
+    <a href="/stories/<%=story._id%>/edit" class="btn btn-primary ms-3 col-1">Edit</a>
+    <form action="/stories/<%=story._id%>?_method=DELETE" method="post">
+        <button class="btn btn-danger offset-5" >Delete</button>
+    </form>
+</div>
+<% }  else { %>
+    <div class="offset-1">
+        <a href="/stories/<%= story._id %>/Remix" class="btn btn-danger ms-2">Create Your Version</a>
+    </div>
+    <% } %>
+    <% if(story.originalAuthor) {%>
+        <a href="" class="offset-10 originalAuthor"><b>Original by:</b>
+        @<%= story.originalAuthor.username %> </a>
+    <% } %>
+</div>
+
+<div class="mt-3  offset-1">
+    <h5>write a short comment</h5>
+    <form action="/stories/<%= story._id %>/reviews" method="post">
+        <div class="col-5">
+            <!-- <label for="comment" class="form-label">Comment:</label> -->
+            <textarea name="review[comment]" placeholder="comment here..." id="comment" class="form-control border border-black mt-3" required></textarea>
+        </div>
+        <button class="btn btn-outline-danger mt-3">Add</button>
+    </form>
+</div>
+<br>
+<div class="row offset-1 ">
+    <% if (currUser) { %>
+        <% if (story.reviews.length > 0) { %>
+            <h5>All Reviews</h5>
+            <% for (let review of story.reviews) { %>
+                <div class="card col-5 mb-3 me-5">
+                    <div class="card-body">
+                        <h6 class="card-title fst-italic"><%= review.author ? review.author.username : "Anonymous" %></h6>
+                        <p class="card-text"><%= review.comment %></p>
+                    </div>
+                    <form action="/stories/<%= story._id %>/reviews/<%= review._id %>?_method=DELETE" 
+                          class="mb-3 mt-2" 
+                          method="POST">
+                        <button class="btn btn-sm btn-dark">Delete</button>
+                    </form>
+                </div>
+            <% } %>
+        <% } %>
+    <% } %>
+</div>

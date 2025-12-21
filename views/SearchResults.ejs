@@ -1,0 +1,26 @@
+<% layout("/layouts/boilerplate.ejs") -%>
+<div class="row offset-3">
+    <h2>Search Results for "<%= searchTerm %>"</h2>
+
+<h4>Stories</h4>
+<% if(stories.length) { %>
+  <ul>
+    <% stories.forEach(story => { %>
+      <a href="/stories/<%= story._id %>"><li><%= story.title %></li></a>
+    <% }) %>
+  </ul>
+<% } else { %>
+  <p>No stories found.</p>
+<% } %>
+
+<h4>Users</h4>
+<% if(users.length) { %>
+  <ul>
+    <% users.forEach(user => { %>
+      <li><%= user.username %></li>
+    <% }) %>
+  </ul>
+<% } else { %>
+  <p>No users found.</p>
+<% } %>
+</div>
