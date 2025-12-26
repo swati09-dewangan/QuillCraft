@@ -1,4 +1,4 @@
-if(process.env.Node_ENV !="production") {
+if(process.env.NODE_ENV !="production") {
     require('dotenv').config()
 }
 
@@ -19,7 +19,7 @@ const review=require("./routes/review.js");
 const user=require("./routes/user.js"); 
 const search=require("./routes/search.js");
 const session =require("express-session");
-const MongoStore = require('connect-mongo');
+const MongoStore = require('connect-mongo')(session);
 const flash=require("connect-flash");
 const passport=require("passport");
 const LocalStrategy=require("passport-local");
@@ -35,7 +35,7 @@ app.use(express.static(path.join(__dirname,"public")));
 const dbUrl=process.env.ATLASDB_URL;
 // code to connect with mongoose
 async function main() {
-    await mongoose.connect(mongo_URL)
+    await mongoose.connect(dbUrl)
 }
 
 main().then(()=> {
@@ -44,15 +44,14 @@ main().then(()=> {
     console.log(err);
 });
 
-const store=MongoStore.create({
-    mongo_Url:dbUrl,
-    crypto:{
-        secret:process.env.SECRET,
-    },
-    touchAfter:24*3600,
+// ✅ Session store (v3 syntax)
+const store = new MongoStore({
+    url: dbUrl,
+    collection: "sessions",
+    touchAfter: 24 * 3600
 });
 
-store.on("error",()=>{
+store.on("error",(err)=>{
     console.log("ERROR IN MONGO SESSION STORE",err);
 })
 
@@ -106,6 +105,8 @@ app.use("*",(err,req,res,next)=> {
 });
 
 // to connect with localhost 
-app.listen(8080,()=> {
-    console.log("Listening to port 8080");
+const PORT = process.env.PORT || 8080;
+
+app.listen(PORT, () => {
+    console.log(`Listening on port ${PORT}`);
 });
