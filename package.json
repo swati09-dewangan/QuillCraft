@@ -1,6 +1,6 @@
 {
-  "engines":{
-    "nodes":"22.17.1"
+  "engines": {
+    "nodes": "22.17.1"
   },
   "name": "major_project-3",
   "version": "1.0.0",
@@ -15,7 +15,7 @@
   "dependencies": {
     "cloudinary": "^1.41.3",
     "connect-flash": "^0.1.1",
-    "connect-mongo": "^6.0.0",
+    "connect-mongo": "^3.2.0",
     "dotenv": "^17.2.3",
     "ejs": "^3.1.10",
     "ejs-mate": "^4.0.0",
