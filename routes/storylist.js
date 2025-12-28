@@ -49,7 +49,7 @@ router.post("/",
     newStory.img={url,filename};
     await newStory.save();
     req.flash("success", "New Story Created");
-    res.redirect(`stories/${newStory._id}`);
+    res.redirect(`/stories/${newStory._id}`);
     }
     
 ));
@@ -114,7 +114,7 @@ router.post("/:id/Remix",
     await remixStory.save();
     console.log(remixStory);
     req.flash("success", "You have created new form of this story!");
-    res.redirect(`stories/${remixStory._id}`); 
+    res.redirect(`/stories/${remixStory._id}`); 
 }));
 
 //route to get edit form
@@ -127,7 +127,7 @@ router.get("/:id/edit",
         req.flash("error","Story you are requested for does not exist");
         res.redirect("/stories");
     }
-    res.render("stories/edit.ejs",{story});
+    res.render("stories/edit",{story});
 }));
 
 // route to post edited story
@@ -146,7 +146,7 @@ router.put("/:id",
         await story.save();
     }
     req.flash("success"," Story Updated ");
-    res.redirect(`stories/${id}`);
+    res.redirect(`/stories/${id}`);
 }));
 
 //route to delete story
@@ -157,7 +157,7 @@ router.delete("/:id",
     let {id}=req.params;
     let result=await Story.findByIdAndDelete(id);
     req.flash("success","Story Deleted");
-    res.redirect("stories");
+    res.redirect("/stories");
 }));
 
 module.exports=router;
