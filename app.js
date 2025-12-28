@@ -93,6 +93,10 @@ app.use("/stories",genre); // to get genre wise story
 app.use("/stories",story);// to perform post,put and delete operation on story
 app.use("/stories/:id/reviews",review);// to post and delete review 
 
+
+app.get("/",(req,res)=> {
+    res.render("stories/index");
+})
 // to show error for the page if not found
 app.all("*",(req,res,next)=> {
     next(new ExpressError(404,"page not found"));

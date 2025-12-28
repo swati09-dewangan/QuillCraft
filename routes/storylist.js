@@ -22,7 +22,7 @@ const validateStory=(req,res,next)=> {
 };
 
 // route  to show all the stories in home
-router.get("",
+router.get("/",
     wrapAsync(async(req,res)=> {
     const allStories= await Story.find({});
     res.render("stories/index",{allStories});
@@ -146,7 +146,7 @@ router.put("/:id",
         await story.save();
     }
     req.flash("success"," Story Updated ");
-    res.redirect(`/stories/${id}`);
+    res.redirect(`stories/${id}`);
 }));
 
 //route to delete story
@@ -157,7 +157,7 @@ router.delete("/:id",
     let {id}=req.params;
     let result=await Story.findByIdAndDelete(id);
     req.flash("success","Story Deleted");
-    res.redirect("/stories");
+    res.redirect("stories");
 }));
 
 module.exports=router;
