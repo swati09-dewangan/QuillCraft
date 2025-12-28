@@ -25,7 +25,7 @@ const validateStory=(req,res,next)=> {
 router.get("/",
     wrapAsync(async(req,res)=> {
     const allStories= await Story.find({});
-    res.render("./stories/index.ejs",{allStories});
+    res.render("stories/index.ejs",{allStories});
 }));
 
 // route to get new story form
