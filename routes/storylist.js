@@ -127,7 +127,7 @@ router.get("/:id/edit",
         req.flash("error","Story you are requested for does not exist");
         res.redirect("/stories");
     }
-    res.render("stories/edit",{story});
+    res.render("stories /edit",{story});
 }));
 
 // route to post edited story

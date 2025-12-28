@@ -94,9 +94,11 @@ app.use("/stories",story);// to perform post,put and delete operation on story
 app.use("/stories/:id/reviews",review);// to post and delete review 
 
 
-app.get("/",(req,res)=> {
-    res.render("stories/index");
-})
+app.get("/",
+    wrapAsync(async(req,res)=> {
+    const allStories=await Story.find({});
+    res.render("stories/index",{allStories});
+}))
 // to show error for the page if not found
 app.all("*",(req,res,next)=> {
     next(new ExpressError(404,"page not found"));
