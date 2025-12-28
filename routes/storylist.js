@@ -22,7 +22,7 @@ const validateStory=(req,res,next)=> {
 };
 
 // route  to show all the stories in home
-router.get("/",
+router.get("",
     wrapAsync(async(req,res)=> {
     const allStories= await Story.find({});
     res.render("stories/index",{allStories});

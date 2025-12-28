@@ -6,7 +6,7 @@
     <h4><%=story.title %></h4> 
     <p class="tags-genre"><%= story.genre %></p>
     <p class="tags-genre"><%= story.tags %></p>
-    <p class="story-cont"><%= story.content%>...</p>
+    <p class="story-cont"><%= story.content%></p>
 </div>
 <% if(currUser && currUser._id.equals(story.owner._id)) { %>
 <div class="btns offset-1 mt-3 ">
