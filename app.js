@@ -31,7 +31,7 @@ app.use(express.json());
 app.use(methodOverride("_method"));
 app.use(express.static(path.join(__dirname,"public")));
 
-// const mongo_URL="mongodb://127.0.0.1:27017/QuillCraft";
+const mongo_URL="mongodb://127.0.0.1:27017/QuillCraft";
 const dbUrl=process.env.ATLASDB_URL;
 // code to connect with mongoose
 async function main() {
