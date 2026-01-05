@@ -1,6 +1,5 @@
 <style>
   .navbar {
-    display: flex  !important;
     align-items: center !important;
   }
   .nav-item  :hover {
@@ -31,13 +30,27 @@
   .navbar-brand i{
     font-size: 1.5rem;
   }
-  @media (min-width:576px) {
-    .search input{
-      width: 40vw;
-      max-width: 400px;
-      min-width: 200px;
-    }
+  .search-input {
+  width: 20rem;
+  border-radius: 15px;
+}
+
+@media (max-width: 768px) {
+  .search-input {
+    width: 14rem;
   }
+}
+
+@media (max-width: 576px) {
+  .search-input {
+    width: 100%;
+  }
+
+  .search-wrapper {
+    flex: 1;
+  }
+}
+
 
 </style>
 <nav class="navbar navbar-expand-lg bg-body-tertiary sticky-top my-navbar">
@@ -58,7 +71,7 @@
       </ul>
       
     </div>
-    <div class="navbar-nav search">
+    <div class="d-flex align-items-center gap-3 ms-auto search-wrapper">
       <form action="/search" class="d-flex" role="search">
         <input type="text" placeholder="Search Here..." aria-label="search" class="form-control search-input" name="q">
         <button class="btn search-btn btn-danger col-2" type="submit"><i class="fa-solid fa-magnifying-glass"></i></button>
